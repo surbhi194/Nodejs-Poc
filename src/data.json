@@ -1,0 +1,32 @@
+[
+	{
+        "name": "srishti",
+        "email": "srishti@gmail.com",
+        "phone":"6789045632",
+        "address":"india"
+	},
+	{
+        "name": "surbhi",
+        "email": "surbhi@gmail.com",
+        "phone":"6789085632",
+        "address":"india"
+	},
+	{
+        "name": "kirti",
+        "email": "kirti@gmail.com",
+        "phone":"6789040632",
+        "address":"india"
+	},
+	{
+        "name": "pihu",
+        "email": "pihu@gmail.com",
+        "phone":"8789045632",
+        "address":"india"
+	},
+	{
+        "name": "swasti",
+        "email": "swasti@gmail.com",
+        "phone":"6780045632",
+        "address":"india"
+	}
+]
