@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const express =require("express");
 const validator =require("validator");
 
-const studentsScheme =new mongoose.Schema({
+const studentsScheme = mongoose.Schema({
     name:{
         type:String,
         required:true,
@@ -22,8 +22,7 @@ const studentsScheme =new mongoose.Schema({
     Phone:{
         type:Number,
         min:10,
-        require:true,
-        unique:true
+        require:true
     },
     address:{
         type:String,
@@ -31,6 +30,6 @@ const studentsScheme =new mongoose.Schema({
     }
 })
 
-const Student = new mongoose.model('Student',studentsScheme);
+module.exports = mongoose.model('Student',studentsScheme);
 
-module.export = Student;
+// module.export = Student;
