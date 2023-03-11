@@ -5,6 +5,10 @@ const mongoose = require("mongoose");
 const Student = require("./models/students");
 const app = express();
 const port = process.env.PORT || 8000;
+const indexRouter = require('./routes/indes');
+const SWAGGER = require("./config/swagger.js");
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
 
 app.use(express.json());
 
@@ -73,6 +77,30 @@ app.delete("/students/:id", async(req,res) =>{
         res.status(404).send(e);
     }
 })
+
+
+
+const swaggerOptions = {
+    definition: {
+        openapi: SWAGGER.open_api_version,
+        info: {
+            title: SWAGGER.title,
+            version: SWAGGER.version,
+            description: SWAGGER.description,
+        },
+        servers: [
+            {
+                url: SWAGGER.url,
+            },
+        ]
+    },
+    apis: SWAGGER.apis,
+};
+
+const specs = swaggerJsDoc(swaggerOptions);
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+app.use('/', indexRouter);
+
 
 const uri = "mongodb+srv://Surbhi_194:Surbhi_194@cluster0.etezf8c.mongodb.net/studentapi?retryWrites=true&w=majority"
 
