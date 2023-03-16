@@ -23,7 +23,7 @@ var app = express();
  *       example:  
  *         username: bansaltushar 
  *         orgname: Org1 
- *     loginUser:
+ *     deleteUser:
  *       type: object
  *       required:
  *         - username
@@ -38,6 +38,36 @@ var app = express();
  *       example:  
  *         username: bansaltushar 
  *         orgname: Org1 
+ *     updateUser:
+ *       type: object
+ *       required:
+ *         - username
+ *         - orgname
+ *       properties:
+ *         username:
+ *           type: string
+ *           description: Name of User
+ *         orgname:
+ *           type: string
+ *           description: Organization name
+ *       example:  
+ *         username: bansaltushar 
+ *         orgname: Org1 
+ *     readUser:
+ *       type: object
+ *       required:
+ *         - username
+ *         - orgname
+ *       properties:
+ *         username:
+ *           type: string
+ *           description: Name of User
+ *         orgname:
+ *           type: string
+ *           description: Organization name
+ *       example:  
+ *         username: bansaltushar 
+ *         orgname: Org1   
  */
 
 
@@ -54,6 +84,36 @@ var app = express();
  *        application/json:
  *          schema:
  *            $ref: '#/components/schemas/registerUser'
+ *  delete:
+ *    summary: delete functionality
+ *    tags:
+ *      - User
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/deleteUser'
+ *  patch:
+ *    summary: Update functionality
+ *    tags:
+ *      - User
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/updateUser' 
+ *  get:
+ *    summary: read functionality
+ *    tags:
+ *      - User
+ *    requestBody:
+ *      required: false
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/readUser'
  *    responses:
  *      200:
  *        description: User registration successfully
@@ -64,7 +124,7 @@ var app = express();
  *      403:
  *        description: Method Not Allowed
  */
-app.use('/register', async (req, res) => {
+app.use('/registers', async (req, res) => {
 
     // const username = req.body.username;
 
